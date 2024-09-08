@@ -1,0 +1,17 @@
+services:
+  rabbitmq-container:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  mysql-container:
+    image: mysql
+    container_name: mysql-container
+    environment:
+      - MYSQL_DATABASE=produtoDB
+      - MYSQL_PASSWORD=1234
+      - MYSQL_ROOT_PASSWORD=verysecret
+      - MYSQL_USER=myuser
+    ports:
+      - "3306:3306"
