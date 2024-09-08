@@ -1,6 +1,7 @@
 package Desafio.Petize.services;
 
 import Desafio.Petize.enums.StatusPedido;
+import Desafio.Petize.event.PedidoProducer;
 import Desafio.Petize.exception.ResourceNotFoundException;
 import Desafio.Petize.model.Pedido;
 import Desafio.Petize.model.Produto;
@@ -20,9 +21,11 @@ public class PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
-
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private PedidoProducer pedidoProducer;
 
 
     public Pedido criarPedido(Pedido pedido) {
@@ -65,7 +68,13 @@ public class PedidoService {
         if (pedido.isPresent()) {
             Pedido pedidoExistente = pedido.get();
             pedidoExistente.setStatusPedido(novoStatus);
-            return pedidoRepository.save(pedidoExistente);
+
+            //TODO MUDAR PARA O PedidoDTO
+            pedidoProducer.sendMessage(pedidoExistente);
+
+            //TODO NÃO DEVE SALVAR, O CONSUMER QUE SALVA O STATUS
+//            return pedidoRepository.save(pedidoExistente);
+            return pedidoExistente;
         }
         throw new EntityNotFoundException("Pedido não encontrado");
     }

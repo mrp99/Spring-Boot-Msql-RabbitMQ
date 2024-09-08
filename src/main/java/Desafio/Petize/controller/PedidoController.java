@@ -84,7 +84,7 @@ public class PedidoController {
     ) {
         try {
             Pedido pedidoAtualizado = pedidoService.atualizarStatus(id, status);
-            return ResponseEntity.ok(pedidoAtualizado);
+            return ResponseEntity.noContent().build();
         } catch (ResourceNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
