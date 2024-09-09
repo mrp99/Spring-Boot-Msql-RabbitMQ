@@ -3,9 +3,7 @@ package Desafio.Petize.controller;
 import Desafio.Petize.enums.StatusPedido;
 import Desafio.Petize.exception.ResourceNotFoundException;
 import Desafio.Petize.model.Pedido;
-import Desafio.Petize.repository.PedidoRepository;
 import Desafio.Petize.services.PedidoService;
-import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +12,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping ("/pedidos")

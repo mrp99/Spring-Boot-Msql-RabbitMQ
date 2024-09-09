@@ -2,7 +2,6 @@ package Desafio.Petize.controller;
 
 import Desafio.Petize.exception.ResourceNotFoundException;
 import Desafio.Petize.model.Produto;
-import Desafio.Petize.repository.ProdutoRepository;
 import Desafio.Petize.services.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/produtos")
